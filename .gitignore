@@ -1,0 +1,9 @@
+pretest_1
+pretest_1_scans
+.tags1
+*.zip
+*.tif
+*.png
+!unterschrift.png
+*.mp3
+*.mp4
