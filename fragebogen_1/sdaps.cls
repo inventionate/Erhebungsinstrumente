@@ -1170,7 +1170,7 @@
   \begin{tabular}{*{6}{C}}
     #2 & #3 & #4 & #5 & #6 & #7 \\%
     % Abstand zwischen den Reihen vergrößern.
-    \vspace{.5cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox \\%
+    \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox & \vspace{.25cm}\checkbox \\%
   \end{tabular}%
   \end{center}
   % SDAPS Metadaten zur Identifikation der Fragen
