@@ -1073,7 +1073,6 @@
   \fi
 }
 
-
 \providecommand*{\setmarkrange}[1]{%
   \if@sdaps@markenvactive%
     \ClassError{sdaps}{Changed markrange inside a markgroup!}{The markrange can not be changed inside an active markgroup.}%
@@ -1147,6 +1146,46 @@
 
 \newcolumntype{M}{>{\usekomafont{singlemarkchoicefont}\centering\arraybackslash}p{1.25cm}}
 \newcolumntype{K}{>{\usekomafont{singlemarkchoicefont}\centering\arraybackslash}p{1.7cm}}
+
+
+
+
+% Neue Umgebung für kombinierte Fragegruppen (Kästchen und Textfeld).
+
+
+\newenvironmentx{choicegrouptext}[2][2={X*{\thechoicegroupnumchoices}{c}}]{%
+  \question{#1}%
+  \immediate\write\sdapsoutfile{QObject-Head=\arabic{section}.\arabic{subsection}. \unexpanded{#1}} %
+  \setcounter{choicegroupnumchoices}{0} %
+  \global\def\@sdaps@choicegroup@start{\tabularx{\linewidth}{#2}}%
+  \global\def\@sdaps@choicegroup@boxes{} %
+}{%
+  \ifnum\thechoicegroupnumchoices>-1 %
+    % Throw error \@ehb == you have lost some text
+    \PackageError{sdaps}{Got a choicegroup without any choice lines!}\@ehb %
+  \fi %
+  \endtabularx%
+}
+
+\providecommand*{\groupaddtextchoice}[1]{%
+  \ifnum\thechoicegroupnumchoices<0
+    % Throw error \@ehb == you have lost some text
+    % Why is this emitted multiple times? And can one create a multiline message?
+    \PackageError{sdaps}{Tried to add a new choice, but not at the beginning of a choicegroup environment!}\@ehb
+  \else
+    \stepcounter{choicegroupnumchoices}%
+    \g@addto@macro{\@sdaps@choicegroup@start}{& {\usekomafont{choicegroupchoicefont}\strut#1}}%
+    \g@addto@macro{\@sdaps@choicegroup@boxes}{& \immediate\write\sdapsoutfile{Answer-Choice=\unexpanded{#1}}
+    % TEXTBOX
+    \fbox{
+    \begin{minipage}{7cm}
+        \hfill\vspace{.7cm}
+    \end{minipage}
+    }
+    }%
+  \fi
+}
+
 
 
 
