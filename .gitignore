@@ -4,10 +4,15 @@ pretest_2
 pretest_2_scans
 pretest_3
 pretest_3_scans
+befragung_wintersemester_15_16
 .tags1
+*.tags*
 *.zip
 *.tif
 *.png
 !unterschrift.png
 *.mp3
 *.mp4
+*stamped*
+*report*
+*annotated*
